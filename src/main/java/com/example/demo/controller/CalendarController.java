@@ -35,32 +35,12 @@ public class CalendarController {
 	//  関数宣言                                    //
 	//////////////////////////////////////////////////
 
-	// ただのカレンダーの読み込み
-	//	@GetMapping()
-	//	public String calendarShowList(Model model) {
-	//		System.out.println("すべてのカレンダーの読み込み");
-	//
-	//		//注文履歴を全件取得
-	//		Iterable<Calendar> list = service.selectAll();
-	//		//表示用「Model」への格納
-	//		model.addAttribute("list", list);
-	//		//calendar.htmlのカレンダー、注文履歴の表示
-	//		return "calendar";
-	//	}
-
-	// 機能：ユーザーネームをセッションに保存
-	// 再表示用
+	// メールアドレスをセッションに保存
+	// メールアドレスと合致する注文履歴のみリストに追加
 	@GetMapping("/calendar")
 	public String calendarShowList2(Model model, Authentication authentication) {
-		System.out.println("メールアドレスで判別します。");
-
-		// セッションでメールアドレス/ユーザ名を受け取り
-//		String mailaddress=(String) this.session.getAttribute("mailaddress");
 
 		String mailaddress = authentication.getName();
-//		String mailaddress = null;
-
-		System.out.println("新規" + mailaddress);
 
 		// 注文履歴を全件取得 (SQLクエリで注文日時を昇降順に並び替え)
 		Iterable<Calendar> list = service.selectAll();
@@ -77,13 +57,19 @@ public class CalendarController {
 		//calendar.htmlのカレンダー、注文履歴の表示
 		return "calendar";
 
-		// 注文履歴のsortができないか
-		// メソッド名sortOrder listでそんなことできるのか
 	}
 
-	@GetMapping("/AAA")
-	public String show() {
-		return "AAA";
-	}
+	// ただのカレンダーの読み込み
+		//	@GetMapping()
+		//	public String calendarShowList(Model model) {
+		//		System.out.println("すべてのカレンダーの読み込み");
+		//
+		//		//注文履歴を全件取得
+		//		Iterable<Calendar> list = service.selectAll();
+		//		//表示用「Model」への格納
+		//		model.addAttribute("list", list);
+		//		//calendar.htmlのカレンダー、注文履歴の表示
+		//		return "calendar";
+		//	}
 
 }
