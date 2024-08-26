@@ -10,38 +10,103 @@
 }
 
 nav {
-    display: flex;
-    justify-content: space-between; /* 全体を左右に分ける */
-    align-items: center;
-    gap: 10px; /* アイテム間のスペース（オプション） */
-    padding: 5px; /* ナビゲーション内にパディングを追加（オプション） */
+	display: flex;
+	justify-content: space-between;
+	/* 全体を左右に分ける */
+	align-items: center;
+	gap: 10px;
+	/* アイテム間のスペース（オプション） */
+	padding: 5px;
+	/* ナビゲーション内にパディングを追加（オプション） */
+	
+	width: 100%; /* ナビゲーションを全幅に */
 }
 
 nav a {
-    display: flex;
-    align-items: center;
-    color: black;
-    margin-right: 3%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* 文字とアイコンを中央に配置 */
+	color: black;
+	text-decoration: none;
+
+	margin-right: 3%;
+
+	position: relative;
+	padding: 0 15px;
+	/* 左右に適度なパディングを追加 */
+	margin: 0;
+	/* 余計なマージンを取り除く */
+	text-align: center;
+	/* テキストを中央揃え */
 }
 
 nav img {
-    width: 25px;
-    height: auto;
+	width: 25px;
+	height: auto;
 }
 
 nav .left-align {
-    margin-right: auto;
+	margin-right: auto; /* 左側のアイテムを左寄せ */
 }
 
 nav .extra-image {
-    width: auto;
-    height: 4.5rem;
-    padding-left: 10%;
+	width: auto;
+	height: 4.5rem;
+	padding-left: 10%;
 }
 
 nav b {
-    display: flex;
-    align-items: center;
-    color: black;
-    font-size: 25px;
+	display: flex;
+	align-items: center;
+	color: black;
+	font-size: 25px;
+}
+
+/* ドロップダウンメニュー */
+.drop-menu {
+	position: relative;
+}
+
+.drop-menu-list {
+	background-color: rgb(128, 255, 128);
+	position: absolute;
+	top: 100%;
+	/*	left: 0;*/
+
+	visibility: hidden;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	z-index: 1;
+}
+
+.drop-menu-list li {
+	border-bottom: 1px solid #ccc;
+}
+
+.drop-menu-list li:last-child {
+	border-bottom: none;
+}
+
+.drop-menu-list a {
+	display: block;
+	/*	padding: 10px;*/
+	padding: 10px 20px;
+	/* テキスト周りのパディングを調整 */
+
+	color: black;
+	text-decoration: none;
+
+	text-align: center;
+	/* ドロップダウンメニュー内のテキストを中央揃え */
+}
+
+.drop-menu-list a:hover {
+	background-color: rgb(100, 255, 100);
+}
+
+/* ドロップダウンメニューのホバー処理 */
+.drop-menu:hover .drop-menu-list {
+	visibility: visible;
 }

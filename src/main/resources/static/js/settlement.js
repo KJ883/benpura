@@ -30,12 +30,34 @@ document.addEventListener('DOMContentLoaded', function() {
 	updateTotal();
 });
 
-document.getElementById('openPopup').addEventListener('click', () => {
-	document.getElementById('overlay').classList.add('active');
-	document.getElementById('popup').classList.add('active');
+document.addEventListener('DOMContentLoaded', () => {
+	document.getElementById('openPopup').addEventListener('click', openPopup);
 });
 
-document.getElementById('closePopup').addEventListener('click', () => {
-	document.getElementById('overlay').classList.remove('active');
-	document.getElementById('popup').classList.remove('active');
-});
+function openPopup() {
+	// ここでサーバーから注文情報を取得します
+	fetch('/api/orders/week')
+		.then(response => response.json())
+		.then(data => {
+			// ポップアップの内容を設定します
+			let popupContent = '<h2>週間注文内容</h2>';
+			popupContent += '<table><tr><th>日付</th><th>曜日</th><th>店名</th><th>内容</th></tr>';
+			data.forEach(order => {
+				popupContent += `<tr><td>${order.date}</td><td>${order.dayOfWeek}</td><td>${order.storeName}</td><td>${order.details}</td></tr>`;
+			});
+			popupContent += '</table>';
+
+			// ポップアップ要素に内容を設定して表示します
+			const popup = document.createElement('div');
+			popup.classList.add('popup');
+			popup.innerHTML = popupContent + '<button onclick="closePopup()">閉じる</button>';
+			document.body.appendChild(popup);
+		});
+}
+
+function closePopup() {
+	const popup = document.querySelector('.popup');
+	if (popup) {
+		document.body.removeChild(popup);
+	}
+}

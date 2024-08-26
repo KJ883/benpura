@@ -39,6 +39,10 @@ public class CookController {
 	@GetMapping
 
 	public String showList(@RequestParam("shopName") String shopName, @RequestParam("id") Integer id, Model model){
+		/*---------------*/
+		this.session.setAttribute("shopId", id);
+		this.session.setAttribute("shopName", shopName);
+		/*---------------*/
 		Iterable<CookCategory> recommendList = repository.findAll();
 		List<CategoryDto> list = new ArrayList<>();
 		

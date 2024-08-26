@@ -35,7 +35,7 @@
 					<form th:action="@{/settlement}" method="post">
 						<!-- Sサイズのラジオボタンと価格表示 -->
 						<label for="osusumeS">
-							<input type="radio" id="osusumeS" th:name="price+${s.index}" th:value="${obj.priceS}"
+							<input type="radio" id="osusumeS" th:name="price" th:value="${obj.priceS}"
 								checked=" ${obj.defaultSize == 'S' }">
 							<span class="item-size">Sサイズ</span>
 							<span class="item-price" th:text="${obj.priceS} + '円'"></span>
@@ -43,7 +43,7 @@
 						<br />
 						<!-- Mサイズのラジオボタンと価格表示 -->
 						<label for="osusumeM">
-							<input type="radio" id="osusumeM" th:name="price+${s.index}" th:value="${obj.priceM}">
+							<input type="radio" id="osusumeM" th:name="price" th:value="${obj.priceM}">
 							<span class="item-size">Mサイズ</span>
 							<span class="item-price" th:text="${obj.priceM} + '円'"></span>
 						</label>
