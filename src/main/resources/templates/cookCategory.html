@@ -15,59 +15,60 @@
 		<div class="text-bound">
 			<h1> BENPURA MENU 弁ぷら</h1>
 		</div>
-		
-			<div class="container" >
-				<div class="menu-item" th:each="obj,s:${recommendList}">
-					<div>
-						<p th:class="${obj.comments1Color}" th:text="${obj.comments1}"></p>
-					</div>
-					<img th:src="'data:image/png;base64,'+${obj.image}" alt="オススメ弁当">
-					<div class="name-description">
-						<p th:text="${obj.item}"></p>
-					</div>
-					<div class="item-description">
-						<p th:text="${obj.introductions}"></p>
-					</div>
-					<div class="text-wrapper">
-						<p class="item-name" th:text="${obj.comments2}"></p>
-					</div>
-					<div class="size-wrapper">
-						<form th:action="@{/settlement}" method="post">
-							<!-- Sサイズのラジオボタンと価格表示 -->
-							<label for="osusumeS">
-								<input type="radio" id="osusumeS" name="price" th:value="${obj.priceS}">
-								<span class="item-size">Sサイズ</span>
-								<span class="item-price" th:text="${obj.priceS} + '円'"></span>
-							</label>
-							<br />
-							<!-- Mサイズのラジオボタンと価格表示 -->
-							<label for="osusumeM">
-								<input type="radio" id="osusumeM" name="price" th:value="${obj.priceM}">
-								<span class="item-size">Mサイズ</span>
-								<span class="item-price" th:text="${obj.priceM} + '円'"></span>
-							</label>
-							<!-- 選択ボタン -->
-							<div class="button-style">
-								<input type="hidden" name="image" th:value="${obj.image}">
-								<input type="hidden" name="name" th:value="${obj.item}">
-								<button type="submit" class="select-button">選択</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
 
-			<div class="container">
-				<div class="menu-item" th:each="ctg,s:${categoryList}">
-					<img th:src="'data:image/png;base64,'+${ctg.image}" alt="弁当">
-					<a th:href="@{/cookCategory/{ctg}(ctg=${ctg.bentoType})}" class="button">
-						<div class="item-name2">
-							<div th:text="${ctg.typeComments}"></div>
+		<div class="container">
+			<div class="menu-item" th:each="obj,s:${recommendList}">
+				<div>
+					<p th:class="${obj.comments1Color}" th:text="${obj.comments1}"></p>
+				</div>
+				<img th:src="'data:image/png;base64,'+${obj.image}" alt="オススメ弁当">
+				<div class="name-description">
+					<p th:text="${obj.item}"></p>
+				</div>
+				<div class="item-description">
+					<p th:text="${obj.introductions}"></p>
+				</div>
+				<div class="text-wrapper">
+					<p class="item-name" th:text="${obj.comments2}"></p>
+				</div>
+				<div class="size-wrapper">
+					<form th:action="@{/settlement}" method="post">
+						<!-- Sサイズのラジオボタンと価格表示 -->
+						<label for="osusumeS">
+							<input type="radio" id="osusumeS" name="price" th:value="${obj.priceS}"
+								checked=" ${obj.defaultSize == 'S' }">
+							<span class="item-size">Sサイズ</span>
+							<span class="item-price" th:text="${obj.priceS} + '円'"></span>
+						</label>
+						<br />
+						<!-- Mサイズのラジオボタンと価格表示 -->
+						<label for="osusumeM">
+							<input type="radio" id="osusumeM" name="price" th:value="${obj.priceM}">
+							<span class="item-size">Mサイズ</span>
+							<span class="item-price" th:text="${obj.priceM} + '円'"></span>
+						</label>
+						<!-- 選択ボタン -->
+						<div class="button-style">
+							<input type="hidden" name="image" th:value="${obj.image}">
+							<input type="hidden" name="name" th:value="${obj.item}">
+							<button type="submit" class="select-button">選択</button>
 						</div>
-					</a>
+					</form>
 				</div>
 			</div>
 		</div>
+
+		<div class="container">
+			<div class="menu-item" th:each="ctg,s:${categoryList}">
+				<img th:src="'data:image/png;base64,'+${ctg.image}" alt="弁当">
+				<a th:href="@{/cookCategory/{ctg}(ctg=${ctg.bentoType})}" class="button">
+					<div class="item-name2">
+						<div th:text="${ctg.typeComments}"></div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
 
 	<div class="cursor"></div>
 	<script>

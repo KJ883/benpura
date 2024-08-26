@@ -28,7 +28,8 @@
 						<div class="size-wrapper">
 							<form th:action="@{/settlement}" method="post">
 								<label for="hamburgerS">
-									<input type="radio" id="hamburgerS" name="price" th:value="${obj.priceS}">
+									<input type="radio" id="hamburgerS" name="price" th:value="${obj.priceS}"
+										checked=" ${obj.defaultSize == 'S' }">
 									<span class="item-size">Sサイズ </span>
 									<span class="item-price" th:text="${obj.priceS} + '円'"></span>
 								</label>
@@ -48,13 +49,16 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
+		<form th:action="@{/cookCategory}" method="get">
 			<div class="box4">
-				<a href="/cookCategory" class="category-button">カテゴリへ戻る</a>
+				<input type="hidden" name="id" th:value="${shopId}">
+				<input type="hidden" name="shopName" th:value="${shopName}">
+				<button type="submit" class="category-button">カテゴリへ戻る</button>
 			</div>
-			<div class="cursor"></div>
+		</form>
 	</div>
+	<div class="cursor"></div>
 	<script>
 		document.addEventListener('mousemove', function (event) {
 			const cursor = document.querySelector('.cursor');

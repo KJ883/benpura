@@ -64,6 +64,7 @@ public class CartController {
 		model.addAttribute("today", today);
 		model.addAttribute("reservations", today);
 		model.addAttribute("dto",dto);
+		model.addAttribute("shopId",this.session.getAttribute("shopId"));
 		return "settlement/settlement";
 	}
 	@PostMapping("/comp")
@@ -88,6 +89,7 @@ public class CartController {
 	public String showComp() {
 		return "settlement/comp";
 	}
+	
 	
 //	@GetMapping("/reservations")
 //    public String getReservations(Model model) {
