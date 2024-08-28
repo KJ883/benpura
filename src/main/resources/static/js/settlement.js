@@ -31,64 +31,73 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-	document.getElementById('openPopup').addEventListener('click', openPopup);
+    document.getElementById('openPopup').addEventListener('click', openPopup);
 });
 
 function openPopup() {
-	fetch('/api/orders/week')
-		.then(response => response.json())
-		.then(data => {
-			const today = new Date();
-			let popupContent = '<h2>週間注文内容</h2>';
-			popupContent += `
-                        <table>
-                            <tr>
-                                <th>月曜日</th>
-                                <th>火曜日</th>
-                                <th>水曜日</th>
-                                <th>木曜日</th>
-                                <th>金曜日</th>
-                                <th>土曜日</th>
-                                <th>日曜日</th>
-                            </tr>
-                            <tr>
-                    `;
+    fetch('/api/orders/week')
+        .then(response => response.json())
+        .then(data => {
+            const today = new Date();
+            let popupContent = '<h2>週間注文内容</h2>';
+            popupContent += `
+                <table>
+                    <thead>
+                        <tr>
+            `;
 
-			// 今日から一週間の日付を取得
-			const daysOfWeek = ['月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日', '日曜日'];
-			for (let i = 0; i < daysOfWeek.length; i++) {
-				const currentDate = new Date(today);
-				currentDate.setDate(today.getDate() + i);
-				const formattedDate = currentDate.toISOString().split('T')[0];
+            const daysOfWeek = ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'];
+            const todayIndex = today.getDay();
+            for (let i = 0; i < 7; i++) {
+                const dayOfWeek = daysOfWeek[(todayIndex + i) % 7];
+                popupContent += `<th>${dayOfWeek}</th>`;
+            }
+            popupContent += '</tr></thead><tbody>';
 
-				let dayOrders = data[formattedDate] || [];
-				let cellClass = '';
-				if (currentDate.toDateString() === today.toDateString()) {
-					cellClass = 'today';
-				} else if (dayOrders.length > 0) {
-					cellClass = 'hasOrders';
-				}
+            const dates = [];
+            for (let i = 0; i < 7; i++) {
+                const currentDate = new Date(today);
+                currentDate.setDate(today.getDate() + i);
+                dates.push(currentDate);
+            }
 
-				popupContent += `<td class="${cellClass}">`;
-				popupContent += `<div><strong>${formattedDate}</strong></div>`;
-				dayOrders.forEach(order => {
-					popupContent += `<div>${order.storeName}<br>${order.details}</div><br>`;
-				});
-				popupContent += '</td>';
-			}
+            for (let date of dates) {
+                const formattedDate = date.toISOString().split('T')[0];
+                const dayOrders = data[formattedDate] || [];
+                let cellClass = '';
 
-			popupContent += '</tr></table>';
+                if (date.toDateString() === today.toDateString()) {
+                    cellClass = 'today';
+                } else if (dayOrders.length > 0) {
+                    cellClass = 'hasOrders';
+                }
 
-			const popup = document.createElement('div');
-			popup.classList.add('popup');
-			popup.innerHTML = popupContent + '<button onclick="closePopup()">閉じる</button>';
-			document.body.appendChild(popup);
-		});
+                popupContent += '<tr>';
+                popupContent += `<td class="${cellClass}">${formattedDate}</td>`;
+
+                for (let order of dayOrders) {
+                    popupContent += `<td class="${cellClass}">
+                        <div>${order.item}</div>
+                        <div>${order.shopname}</div>
+                        <div>${order.date}</div>
+                    </td>`;
+                }
+
+                popupContent += '</tr>';
+            }
+
+            popupContent += '</tbody></table><button onclick="closePopup()">閉じる</button>';
+
+            const popup = document.createElement('div');
+            popup.classList.add('popup');
+            popup.innerHTML = popupContent;
+            document.body.appendChild(popup);
+        });
 }
 
 function closePopup() {
-	const popup = document.querySelector('.popup');
-	if (popup) {
-		document.body.removeChild(popup);
-	}
+    const popup = document.querySelector('.popup');
+    if (popup) {
+        document.body.removeChild(popup);
+    }
 }

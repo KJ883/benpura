@@ -223,13 +223,16 @@ header {
 }
 
 .popup td.today {
-	background-color: orange;
+    background-color: orange;
 }
 
 .popup td.hasOrders {
-	background-color: lightgreen;
+    background-color: lightgreen;
 }
 
+.popup td {
+    background-color: lightblue;
+}
 .popup div {
 	margin-bottom: 10px;
 }

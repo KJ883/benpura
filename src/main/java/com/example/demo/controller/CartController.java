@@ -73,7 +73,8 @@ public class CartController {
 		CartDto dto = list.get(bn);
 		Order orderDetails = new Order(null,this.session.getAttribute("mailaddress").toString(), dto.getShopName(), dto.getName(), dto.getPrice(), dto.getPickupTime());
 		service.insertOrder(orderDetails);
-		return "settlement/comp";
+		list.remove(bn);
+		return "redirect:comp";
 	}
 	@PostMapping("/delete")
 	 //delete用リクエスト受ける
