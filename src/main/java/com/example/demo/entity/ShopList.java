@@ -20,7 +20,7 @@ public class ShopList {
     private String holiday;
     private byte[] shopPicture;
     
-    private String shopHourStart;
-    private String shopHourEnd;
+//    private String shopHourStart;
+//    private String shopHourEnd;
     
 }
