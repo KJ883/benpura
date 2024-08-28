@@ -15,6 +15,7 @@ table {
 
 /* 曜日のスタイル設定 */
 th {
+	font-size: 23px;
 	background-color: #f2f2f2;
 	height: 50px;
 	border: 1px solid #ccc;
@@ -27,7 +28,8 @@ th {
 
 /* 日付のスタイル設定 */
 td {
-	height: 100px;
+	font-size: 23px;
+	height: 110px;
 	border: 1px solid #ccc;
 	text-align: center;
 	padding: 10px;
@@ -50,13 +52,13 @@ td {
 	content: "今日";
 	position: absolute;
 	/* 絶対位置に設定 */
-	top: 30%;
+	top: 50%;
 	/* 垂直位置を30%に設定 */
 	left: 50%;
 	/* 水平中央に配置 */
 	transform: translate(-50%, -30%);
 	/* 垂直中央寄せを30%に設定 */
-	font-size: 15px;
+	font-size: 20px;
 	/* 文字サイズを15pxに設定 */
 	color: #d32f2f;
 }
@@ -74,7 +76,8 @@ td {
 /* 先月/来月のスタイル設定 */
 .navigation {
 	text-align: center;
-	margin: 20px 0;
+	margin: 20px ;
+	font-size: 25px;
 }
 
 .navigation button {
@@ -87,7 +90,7 @@ td {
 	background-color: #90ee90;
 	margin-top: 5px;
 	padding: 2px;
-	font-size: 12px;
+	font-size: 18px;
 	width: 80%;
 	margin: 5px auto;
 	/* 上下に余白を持たせ、中央寄せ */
@@ -110,21 +113,33 @@ h1 {
 
 .datetime-container label {
 	margin-right: 10px;
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 /* 日時選択の設定 */
 .datetime-container select {
 	padding: 5px;
-	font-size: 20px;
+	font-size: 25px;
 	margin-right: 10px;
 	/* ボタンとの間にスペースを追加 */
 }
 
 /* "決定"ボタンの文字サイズ */
 .datetime-container button {
+	color:rgb(255, 128, 0);
 	padding: 10px;
 	font-size: 20px;
 	font-weight: bold;
+	background-color: #90ee90;
+	border: 6px outset rgb(0, 64, 0);
+	cursor: pointer;
+}
+
+.datetime-container button:hover {
+	color: rgb(128, 255, 0);
+	background: #fff;
 }
 
 /*日時を選んでくださいのコメント*/
@@ -132,6 +147,21 @@ h0 {
 	text-align: center;
 	font-size: 20px;
 	font-weight: bold;
+}
+
+.box {
+/*	position: absolute;*/
+
+	/* 垂直位置を30%に設定 */
+	left: 50%;
+	/* 水平中央に配置 */
+	transform: translate(5%);
+	border-collapse: collapse;
+    border: 2px solid rgb(128, 255, 0);
+    width: 85%;
+    margin : 50px;
+    text-align: center;
+    box-shadow: 2px 2px 8px rgb(0, 0, 0);
 }
 
 /*注文履歴のタイトル*/

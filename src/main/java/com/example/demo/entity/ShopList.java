@@ -19,4 +19,8 @@ public class ShopList {
     private String shopHour;
     private String holiday;
     private byte[] shopPicture;
+    
+//    private String shopHourStart;
+//    private String shopHourEnd;
+    
 }
