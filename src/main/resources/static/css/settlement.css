@@ -32,15 +32,9 @@ header {
 	display: flex;
 	align-items: center;
 	flex-direction: row;
-	/*    margin-bottom: 3%;*/
-	/*    background-color:rgba(166,255,128,0.7);*/
-	/*    padding: 2%;*/
-	/*    border-radius: 10px;*/
-	/*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
 }
 
 .form-wrapper {
-	/*	display: flex;*/
 	margin-bottom: 3%;
 	background-color: rgba(166, 255, 128, 0.7);
 	padding: 2%;
@@ -58,26 +52,30 @@ header {
 
 .details {
 	flex-grow: 1;
+	padding-left: 20%;
 }
 
-.details h2 {
+.name {
 	margin: 0;
+	font-weight: bold;
 	font-size: 2.5rem;
+	text-align: left;
 }
 
-.details h3 {
-	margin-right: 20%;
+.shopname {
+	font-weight: bold;
 	font-size: 1.2rem;
+	text-align: left;
 }
 
-.details p {
-	margin-top: 10px;
+.time {
+	text-align: left;
 	color: #777;
+	text-decoration:underline;
 }
 
 .quantity {
 	display: flex;
-	/*    padding-left: ;*/
 	align-items: center;
 	margin-top: 20px;
 	margin-left: 10%;
@@ -170,7 +168,6 @@ header {
 }
 
 .return a {
-
 	background-color: #8bc34a;
 	/* 黄緑 */
 	border: none;
@@ -223,15 +220,15 @@ header {
 }
 
 .popup td.today {
-    background-color: orange;
+	background-color: orange;
 }
 
 .popup td.hasOrders {
-    background-color: lightgreen;
+	background-color: lightgreen;
 }
 
 .popup td {
-    background-color: lightblue;
+	background-color: lightblue;
 }
 .popup div {
 	margin-bottom: 10px;
@@ -241,3 +238,96 @@ header {
 	margin-top: 20px;
 }
 
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+	.contens {
+		width: 90%;
+	}
+
+	.product {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.image {
+		margin: 0 auto 20px;
+		width: 100%;
+		max-width: 300px;
+	}
+
+	.details {
+		text-align: center;
+	}
+
+	.details h2 {
+		font-size: 2rem;
+	}
+
+	.details h3 {
+		margin-right: 0;
+		font-size: 1rem;
+	}
+
+	.details p {
+		margin-right: 0;
+	}
+
+	.quantity {
+		margin-left: 0;
+		justify-content: center;
+	}
+
+	.total {
+		padding-right: 0;
+		text-align: center;
+	}
+
+	.buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.add-to-cart,
+	.confirm-reservation {
+		margin: 10px 0;
+		padding: 10px 20px;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 480px) {
+	.title {
+		font-size: 2rem;
+	}
+
+	.details h2 {
+		font-size: 1.5rem;
+	}
+
+	.details h3 {
+		font-size: 0.9rem;
+	}
+
+	.details p {
+		font-size: 0.9rem;
+	}
+
+	.quantity label {
+		font-size: 1.2rem;
+	}
+
+	.quantity button {
+		padding: 0.5%;
+		font-size: 0.7rem;
+	}
+
+	.total {
+		font-size: 2rem;
+	}
+
+	.add-to-cart,
+	.confirm-reservation {
+		padding: 10px 15px;
+		font-size: 12px;
+	}
+}

@@ -22,9 +22,9 @@
 			<div class="product">
 				<img class="image" th:src="'data:image/png;base64,'+${dto.image}" alt="商品名">
 				<div class="details">
-					<h2 th:text="${dto.name}">商品名</h2>
-					<h3 th:text="'店名：'+${dto.shopName}">店名</h3>
-					<p>受け取り日時：<spna th:text="${#temporals.format(dto.pickupTime, 'yyyy年MM月dd日 HH:mm')}"></spna>
+					<p class="name" th:text="${dto.name}">商品名</p>
+					<p class="shopname" th:text="'店名：'+${dto.shopName}">店名</p>
+					<p class="time">受け取り日時：<spna th:text="${#temporals.format(dto.pickupTime, 'yyyy年MM月dd日 HH:mm')}"></spna>
 					</p>
 				</div>
 			</div>
@@ -34,14 +34,15 @@
 					<div class="quantity">
 						<label for="quantity">個数:</label>
 						<button type="button" onclick="decreaseQuantity()">-</button>
-						<input type="number" id="quantity" value="1" min="1" onchange="updateTotal()" th:field="*{number}">
+						<input type="number" id="quantity" value="1" min="1" onchange="updateTotal()"
+							th:field="*{number}">
 						<button type="button" onclick="increaseQuantity()">+</button>
 						<input type="hidden" th:field="*{name}">
 						<input type="hidden" th:field="*{shopName}">
 						<input type="hidden" th:field="*{pickupTime}">
 						<input type="hidden" th:field="*{image}">
 					</div>
-	
+
 					<div class="total">
 						合計: <span id="totalPrice" onchange></span>
 						<input type="hidden" id="totalPriceInput" th:field="*{price}">
@@ -55,7 +56,7 @@
 					<a th:href="@{/cookCategory(shopName=${dto.shopName},id=${shopId})}">選びなおす/一覧に戻る</a>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
 </body>
 
