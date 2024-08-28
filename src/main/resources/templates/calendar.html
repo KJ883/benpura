@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>マイページ/カレンダー</title>
+	<title>マイページ / カレンダー</title>
 
 	<!--  方法①  htmlを右クリックで直接webブラウザにて開く場合-->
 	<!--	<link href="../static/css/calendar.css" rel="stylesheet">-->
@@ -39,7 +39,7 @@
 	<div class="calendar-container">
 
 		<!-- カレンダーのタイトル -->
-		<h1>★本番★マイページ/カレンダー</h1>
+		<h1>マイページ / カレンダー</h1>
 
 		<!-- ナビゲーションボタン（先月・来月に切り替え） -->
 		<div class="navigation">
@@ -75,31 +75,34 @@
 		</table>
 
 		<!-- 日時選択部分 -->
-		<div class="datetime-container">
+		<div class="box">
+			<div class="datetime-container">
 
-			<!-- 山口さんのファイル名を記載 -->
-			<!-- 同一フォルダにあるファイル名nextpage.htmlファイルに飛ぶ -->
-<!--			<form method="get" action="/_nextpage">-->
+				<!-- 山口さんのファイル名を記載 -->
+				<!-- 同一フォルダにあるファイル名nextpage.htmlファイルに飛ぶ -->
+				<!--			<form method="get" action="/_nextpage">-->
 				<form method="get" action="/check-holiday">
 
 
-					<label for="date-select">日付:</label>
+					<label for="date-select">①日にち:</label>
 					<!-- ↓ データ名"orderdate"にて日付を-->
 					<!-- ↓action先のページにsubmit/送信-->
-					 <select id="date-select" name="orderdate">
+					<select id="date-select" name="orderdate">
 					</select>
 
 
-					<label for="time-select">時間:</label>
+					<label for="time-select">②時間:</label>
 					<select id="time-select" name="ordertime">
 					</select>
 
 					<!-- 決定ボタンにて selectDateTime で予約時間の表示 -->
-					<button type="submit">決定</button>
+					<button type="submit"></i>こちらをクリックして予約</button>
 					<!--  ①type="submit"でボタン表示 ②onclickで予約時間を表示-->
 				</form>
+			</div>
+			<h0>お店にてお弁当を受け取る①日にちと②時間を選んでください。</h0>
 		</div>
-		<h0>受け取るに日付と時間を選んで決定ボタンを押してください。</h0>
+
 	</div>
 
 	<!-- 注文履歴表示部分 -->

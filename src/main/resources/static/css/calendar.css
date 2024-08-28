@@ -110,6 +110,9 @@ h1 {
 
 .datetime-container label {
 	margin-right: 10px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 /* 日時選択の設定 */
@@ -125,6 +128,8 @@ h1 {
 	padding: 10px;
 	font-size: 20px;
 	font-weight: bold;
+	background-color: #90ee90;
+	border: 6px outset rgb(0, 64, 0);
 }
 
 /*日時を選んでくださいのコメント*/
@@ -132,6 +137,21 @@ h0 {
 	text-align: center;
 	font-size: 20px;
 	font-weight: bold;
+}
+
+.box {
+/*	position: absolute;*/
+
+	/* 垂直位置を30%に設定 */
+	left: 50%;
+	/* 水平中央に配置 */
+	transform: translate(5%);
+	border-collapse: collapse;
+    border: 2px solid rgb(128, 255, 0);
+    width: 85%;
+    margin : 50px;
+    text-align: center;
+    box-shadow: 2px 2px 8px rgb(0, 0, 0);
 }
 
 /*注文履歴のタイトル*/
