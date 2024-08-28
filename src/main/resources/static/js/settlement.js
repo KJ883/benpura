@@ -36,14 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function openPopup() {
     fetch('/api/orders/week')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             const today = new Date();
             let popupContent = '<h2>週間注文内容</h2>';
+            popupContent += '<table>';
             popupContent += `
-                <table>
-                    <thead>
-                        <tr>
+                <thead>
+                    <tr>
             `;
 
             const daysOfWeek = ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'];
@@ -52,16 +57,20 @@ function openPopup() {
                 const dayOfWeek = daysOfWeek[(todayIndex + i) % 7];
                 popupContent += `<th>${dayOfWeek}</th>`;
             }
-            popupContent += '</tr></thead><tbody>';
+            popupContent += '</tr><tr>';
 
             const dates = [];
             for (let i = 0; i < 7; i++) {
                 const currentDate = new Date(today);
                 currentDate.setDate(today.getDate() + i);
                 dates.push(currentDate);
+                const formattedDate = currentDate.toISOString().split('T')[0];
+                popupContent += `<th>${formattedDate}</th>`;
             }
+            popupContent += '</tr></thead><tbody>';
 
-            for (let date of dates) {
+            for (let i = 0; i < 7; i++) {
+                const date = dates[i];
                 const formattedDate = date.toISOString().split('T')[0];
                 const dayOrders = data[formattedDate] || [];
                 let cellClass = '';
@@ -73,14 +82,21 @@ function openPopup() {
                 }
 
                 popupContent += '<tr>';
+
+                // 日付のセルを追加
                 popupContent += `<td class="${cellClass}">${formattedDate}</td>`;
 
-                for (let order of dayOrders) {
-                    popupContent += `<td class="${cellClass}">
-                        <div>${order.item}</div>
-                        <div>${order.shopname}</div>
-                        <div>${order.date}</div>
-                    </td>`;
+                // 注文のセルを追加
+                if (dayOrders.length > 0) {
+                    dayOrders.forEach(order => {
+                        popupContent += `<td class="${cellClass}">
+                            <div>${order.item}</div>
+                            <div>${order.shopname}</div>
+                            <div>${order.date}</div>
+                        </td>`;
+                    });
+                } else {
+                    popupContent += `<td class="${cellClass}">注文なし</td>`;
                 }
 
                 popupContent += '</tr>';
@@ -92,6 +108,9 @@ function openPopup() {
             popup.classList.add('popup');
             popup.innerHTML = popupContent;
             document.body.appendChild(popup);
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
         });
 }
 
@@ -101,3 +120,5 @@ function closePopup() {
         document.body.removeChild(popup);
     }
 }
+
+

@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Order {
+public class Orders {
 	@Id
 	private Integer id;
 	private String mailaddress;

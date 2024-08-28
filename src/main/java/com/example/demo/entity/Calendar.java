@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="order") // 呼び出したいDBのテーブル名を指定
+@Table(name="orders") // 呼び出したいDBのテーブル名を指定
 //
 //  entityパッケージ
 //  Calenderクラスの生成

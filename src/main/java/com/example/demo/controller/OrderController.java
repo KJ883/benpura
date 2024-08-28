@@ -14,30 +14,30 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.Order;
-import com.example.demo.repository.OrderRepository;
+import com.example.demo.entity.Orders;
+import com.example.demo.repository.OrdersRepository;
 
 @RestController
 public class OrderController {
 
     @Autowired
-    private OrderRepository orderRepository;
+    private OrdersRepository orderRepository;
 
     @GetMapping("/api/orders/week")
-    public ResponseEntity<Map<String, List<Order>>> getWeekOrders(Authentication authentication) {
+    public ResponseEntity<Map<String, List<Orders>>> getWeekOrders(Authentication authentication) {
         String mailaddress = authentication.getName();
         LocalDate today = LocalDate.now();
-        Map<String, List<Order>> weekOrders = new HashMap<>();
+        Map<String, List<Orders>> weekOrders = new HashMap<>();
 
         // 一週間分の注文をまとめて取得
         LocalDateTime startOfDay = today.atStartOfDay();
         LocalDateTime endOfWeek = today.plusDays(6).atTime(23, 59, 59);
-        Iterable<Order> allOrders = orderRepository.findAllByMailaddressAndDateRange(
+        Iterable<Orders> allOrders = orderRepository.findAllByMailaddressAndDateRange(
             mailaddress, startOfDay, endOfWeek
         );
 
         // 取得した注文を日付ごとに分類
-        Map<LocalDate, List<Order>> ordersByDate = StreamSupport.stream(allOrders.spliterator(), false)
+        Map<LocalDate, List<Orders>> ordersByDate = StreamSupport.stream(allOrders.spliterator(), false)
             .collect(Collectors.groupingBy(order -> order.getDate().toLocalDate()));
 
         // 今日から一週間分の日付をループして、注文を曜日ごとにマップに追加
