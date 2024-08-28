@@ -27,16 +27,16 @@
 						</div>
 						<div class="size-wrapper">
 							<form th:action="@{/settlement}" method="post">
-								<label for="hamburgerS">
-									<input type="radio" id="hamburgerS" name="price" th:value="${obj.priceS}"
+								<label th:for="hamburgerS+${s.index}">
+									<input type="radio" th:id="hamburgerS+${s.index}" th:name="price+${s.index}" th:value="${obj.priceS}"
 										checked=" ${obj.defaultSize == 'S' }">
-									<span class="item-size">Sサイズ </span>
-									<span class="item-price" th:text="${obj.priceS} + '円'"></span>
+									<span th:id="hamburgerS+${s.index}" class="item-size">Sサイズ </span>
+									<span th:id="hamburgerS+${s.index}" class="item-price" th:text="${obj.priceS} + '円'"></span>
 								</label>
-								<label for="hamburgerM">
-									<input type="radio" id="hamburgerM" name="price" th:value="${obj.priceM}">
-									<span class="item-size">Mサイズ </span>
-									<span class="item-price" th:text="${obj.priceM} + '円'"></span>
+								<label th:for="hamburgerM+${s.index}">
+									<input type="radio" th:id="hamburgerM+${s.index}" th:name="price+${s.index}" th:value="${obj.priceM}">
+									<span th:id="hamburgerM+${s.index}" class="item-size">Mサイズ </span>
+									<span th:id="hamburgerM+${s.index}" class="item-price" th:text="${obj.priceM} + '円'"></span>
 								</label>
 
 								<div class="button-style">

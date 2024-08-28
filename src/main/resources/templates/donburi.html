@@ -26,16 +26,16 @@
 						</div>
 						<div class="size-wrapper">
 							<form th:action="@{/settlement}" method="post">
-								<label for="katsudonS">
-									<input type="radio" id="katsudonS" name="price" th:value="${obj.priceS}"
+								<label th:for="katsudonS+${s.index}">
+									<input type="radio" th:id="katsudonS+${s.index}" th:name="price+${s.index}" th:value="${obj.priceS}"
 										checked=" ${obj.defaultSize == 'S' }">
-									<span class="item-size">Sサイズ </span>
-									<span class="item-price" th:text="${obj.priceS} + '円'"></span>
+									<span th:id="katsudonS+${s.index}" class="item-size">Sサイズ </span>
+									<span th:id="katsudonS+${s.index}" class="item-price" th:text="${obj.priceS} + '円'"></span>
 								</label>
-								<label for="katsudonM">
-									<input type="radio" id="katsudonM" name="price" th:value="${obj.priceM}">
-									<span class="item-size">Mサイズ </span>
-									<span class="item-price" th:text="${obj.priceM} + '円'"></span>
+								<label th:for="katsudonM+${s.index}">
+									<input type="radio" th:id="katsudonM+${s.index}" th:name="price+${s.index}" th:value="${obj.priceM}">
+									<span th:id="katsudonM+${s.index}" class="item-size">Mサイズ </span>
+									<span th:id="katsudonM+${s.index}" class="item-price" th:text="${obj.priceM} + '円'"></span>
 								</label>
 								<div class="button-style">
 									<input type="hidden" name="image" th:value="${obj.image}">

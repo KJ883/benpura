@@ -56,7 +56,18 @@ public class CartController {
 		return "redirect:/cart";
 	}
 	@PostMapping("/settlement")
-	public String showSettlement(@ModelAttribute CartDto dto,Model model) {
+	public String showSettlement(@ModelAttribute CartDto dto, @RequestParam(required = false) Integer price0,
+			 @RequestParam(required = false) Integer price1,
+			 @RequestParam(required = false) Integer price2, Model model) {
+		if (price0!=null) {
+			dto.setPrice(price0);
+		}
+		if (price1!=null) {
+			dto.setPrice(price1);
+		}
+		if (price2!=null) {
+			dto.setPrice(price2);
+		}
 		dto.setNumber(1);
 		dto.setShopName(this.session.getAttribute("shopName").toString());
 		dto.setPickupTime((LocalDateTime) this.session.getAttribute("orderdatetime"));

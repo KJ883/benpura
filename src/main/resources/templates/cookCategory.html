@@ -34,18 +34,18 @@
 				<div class="size-wrapper">
 					<form th:action="@{/settlement}" method="post">
 						<!-- Sサイズのラジオボタンと価格表示 -->
-						<label for="osusumeS">
-							<input type="radio" id="osusumeS" th:name="price" th:value="${obj.priceS}"
+						<label th:for="osusumeS+${s.index}">
+							<input type="radio" th:id="osusumeS+${s.index}" th:name="price+${s.index}" th:value="${obj.priceS}"
 								checked=" ${obj.defaultSize == 'S' }">
-							<span class="item-size">Sサイズ</span>
-							<span class="item-price" th:text="${obj.priceS} + '円'"></span>
+							<span th:id="osusumeS+${s.index}" class="item-size">Sサイズ</span>
+							<span th:id="osusumeS+${s.index}" class="item-price" th:text="${obj.priceS} + '円'"></span>
 						</label>
 						<br />
 						<!-- Mサイズのラジオボタンと価格表示 -->
-						<label for="osusumeM">
-							<input type="radio" id="osusumeM" th:name="price" th:value="${obj.priceM}">
-							<span class="item-size">Mサイズ</span>
-							<span class="item-price" th:text="${obj.priceM} + '円'"></span>
+						<label th:for="osusumeM+${s.index}">
+							<input type="radio" th:id="osusumeM+${s.index}" th:name="price+${s.index}" th:value="${obj.priceM}">
+							<span th:id="osusumeM+${s.index}" class="item-size">Mサイズ</span>
+							<span th:id="osusumeM+${s.index}" class="item-price" th:text="${obj.priceM} + '円'"></span>
 						</label>
 						<!-- 選択ボタン -->
 						<div class="button-style">
