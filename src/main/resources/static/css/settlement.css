@@ -192,56 +192,103 @@ header {
 }
 
 .popup {
-	display: none;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 80%;
-	max-width: 600px;
-	padding: 20px;
 	background-color: white;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 	z-index: 1000;
-	border-radius: 10px;
+	overflow-y: auto;
+	max-height: 80%;
+	width: 80%;
 }
 
-.popup.active {
-	display: block;
-}
-
-.calendar {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-
-.day {
-	width: calc(100% / 7);
-	padding: 10px;
-	border: 1px solid #ddd;
-	text-align: center;
-	background-color: #fff;
-	border-radius: 5px;
-	margin: 5px 0;
-}
-
-.today {
-	background-color: #ffeb3b;
-	font-weight: bold;
-}
-
-.overlay {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
+.popup table {
 	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: 999;
+	border-collapse: collapse;
 }
 
-.overlay.active {
-	display: block;
+.popup th,
+.popup td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
+	vertical-align: top;
 }
+
+.popup th {
+	background-color: #f2f2f2;
+}
+
+.popup td.today {
+	background-color: orange;
+}
+
+.popup td.hasOrders {
+	background-color: lightgreen;
+}
+
+.popup div {
+	margin-bottom: 10px;
+}
+
+.popup button {
+	margin-top: 20px;
+}
+
+/*.popup {*/
+/*	display: none;*/
+/*	position: fixed;*/
+/*	top: 50%;*/
+/*	left: 50%;*/
+/*	transform: translate(-50%, -50%);*/
+/*	width: 80%;*/
+/*	max-width: 600px;*/
+/*	padding: 20px;*/
+/*	background-color: white;*/
+/*	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);*/
+/*	z-index: 1000;*/
+/*	border-radius: 10px;*/
+/*}*/
+
+/*.popup.active {*/
+/*	display: block;*/
+/*}*/
+
+/*.calendar {*/
+/*	display: flex;*/
+/*	flex-wrap: wrap;*/
+/*	justify-content: space-between;*/
+/*}*/
+
+/*.day {*/
+/*	width: calc(100% / 7);*/
+/*	padding: 10px;*/
+/*	border: 1px solid #ddd;*/
+/*	text-align: center;*/
+/*	background-color: #fff;*/
+/*	border-radius: 5px;*/
+/*	margin: 5px 0;*/
+/*}*/
+
+/*.today {*/
+/*	background-color: #ffeb3b;*/
+/*	font-weight: bold;*/
+/*}*/
+
+/*.overlay {*/
+/*	display: none;*/
+/*	position: fixed;*/
+/*	top: 0;*/
+/*	left: 0;*/
+/*	width: 100%;*/
+/*	height: 100%;*/
+/*	background: rgba(0, 0, 0, 0.5);*/
+/*	z-index: 999;*/
+/*}*/
+
+/*.overlay.active {*/
+/*	display: block;*/
+/*}*/

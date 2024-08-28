@@ -81,8 +81,7 @@ public class ShopListController {
 		// 取得：注文日時の曜日
 		DayOfWeek dayOfWeek = date.getDayOfWeek();
 		// 変換：注文日時の曜日をString型へ
-		String orderDayOfWeek = dayOfWeek.getDisplayName(java.time.format.TextStyle.FULL, Locale.JAPANESE);
-		
+		String orderDayOfWeek = dayOfWeek.getDisplayName(java.time.format.TextStyle.FULL, Locale.JAPANESE);		
 		//
 		// 機能②：注文の日にちと時間を結合してセッションに注文日時を保存
 		//
