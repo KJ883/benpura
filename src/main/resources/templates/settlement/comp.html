@@ -7,6 +7,13 @@
 	<title>注文完了</title>
 	<style>
 		body {
+			background-color: #85b9dd;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+
+		}
 
 		* {
 			position: relative;
@@ -273,6 +280,8 @@
 			color: white;
 			text-decoration: none;
 			border-radius: 5px;
+			
+			z-index: 10;
 		}
 
 		.button:hover {
@@ -285,7 +294,7 @@
 	<div class="container">
 		<h1>注文が完了しました</h1>
 		<p>ご注文ありがとうございます。</p>
-		<a href="cart.html" class="button">カートに戻る</a>
+		<a th:href="@{/cart}" class="button">カートへ戻る</a>
 	</div>
 
 	<div class="frame">
