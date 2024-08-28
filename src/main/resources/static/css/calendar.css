@@ -1,5 +1,116 @@
 @charset "UTF-8";
 
+.step-number {
+    background-color: rgb(128, 255, 0);
+    color: white;
+
+    font-size: 25px;
+    font-weight: bold;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+    
+    border: 2px solid rgb(0, 0, 0);
+}
+
+span{
+	color:rgb(0, 0, 0);
+}
+
+
+.stepbar {
+	margin: 0 auto;
+	width: 90%;
+}
+
+.stepbar .stepbarwrap {
+	margin: 2em 0;
+	position: relative;
+}
+
+.stepbar .stepbarwrap .steptitle {
+	display: inline-flex;
+	align-items: center;
+}
+
+
+.stepbar .stepbarwrap .steptitle .stepnum {
+	padding-left: 1em;
+	font-size: 0.8em;
+	color: #333;
+	font-size: 25px;
+
+}
+
+h2 {
+	position: relative;
+	padding: 1rem 2rem;
+	border-bottom: 5px solid #094;
+}
+
+h2:before {
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+	width: 20%;
+	height: 5px;
+	content: '';
+	background: rgb(128, 255, 128);
+}
+
+h3 {
+	transform: translate(100px, -20px);
+	font-size: 18px;
+}
+h4 {
+	transform: translate(-70px, 70px);
+	font-size: 18px;
+}
+h5 {
+	transform: translate(-90px, 70px);
+	font-size: 18px;
+}
+
+
+.stepbar .stepbarwrap .steptxt {
+	padding-left: 2em;
+}
+
+.stepbar .stepbarwrap .steptxt .title {
+	margin: 0.5em 0;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.stepbar .stepbarwrap .steptxt .txt {
+	font-size: 0.9em;
+}
+
+.stepbar .stepbarwrap .stepline {
+	width: 2px;
+	height: calc(100% + 1em);
+	background-color: #000;
+	position: absolute;
+	top: 5em;
+	left: 2em;
+	z-index: -1;
+}
+
+.stepbarwrap:last-of-type .stepline:last-of-type {
+	display: none;
+}
+
+@media screen and (max-width: 960px) {
+	.stepbar {
+		width: 90%;
+	}
+}
+
 
 /* ページ全体の中央寄せ設定 */
 .calendar-container {
@@ -8,7 +119,7 @@
 
 /* カレンダーの全体のスタイル設定 */
 table {
-	width: 90%;
+	width: 80%;
 	margin: 0 auto;
 	border-collapse: collapse;
 }
@@ -50,14 +161,6 @@ td {
 /* 今日の日付の位置関係 */
 .today::after {
 	content: "今日";
-	position: absolute;
-	/* 絶対位置に設定 */
-	top: 50%;
-	/* 垂直位置を30%に設定 */
-	left: 50%;
-	/* 水平中央に配置 */
-	transform: translate(-50%, -30%);
-	/* 垂直中央寄せを30%に設定 */
 	font-size: 20px;
 	/* 文字サイズを15pxに設定 */
 	color: #d32f2f;
@@ -76,7 +179,7 @@ td {
 /* 先月/来月のスタイル設定 */
 .navigation {
 	text-align: center;
-	margin: 20px ;
+	margin: 20px;
 	font-size: 25px;
 }
 
@@ -128,7 +231,7 @@ h1 {
 
 /* "決定"ボタンの文字サイズ */
 .datetime-container button {
-	color:rgb(255, 128, 0);
+	color: rgb(255, 128, 0);
 	padding: 10px;
 	font-size: 20px;
 	font-weight: bold;
@@ -139,7 +242,7 @@ h1 {
 
 .datetime-container button:hover {
 	color: rgb(128, 255, 0);
-	background: #fff;
+	background: rgb(255, 255, 255);
 }
 
 /*日時を選んでくださいのコメント*/
@@ -150,18 +253,14 @@ h0 {
 }
 
 .box {
-/*	position: absolute;*/
-
-	/* 垂直位置を30%に設定 */
-	left: 50%;
-	/* 水平中央に配置 */
-	transform: translate(5%);
+	/* 配置の位置をずらす */
+	transform: translate(8%);
 	border-collapse: collapse;
-    border: 2px solid rgb(128, 255, 0);
-    width: 85%;
-    margin : 50px;
-    text-align: center;
-    box-shadow: 2px 2px 8px rgb(0, 0, 0);
+	border: 2px solid rgb(128, 255, 0);
+	width: 80%;
+	margin: 50px;
+	text-align: center;
+	box-shadow: 2px 2px 8px rgb(0, 0, 0);
 }
 
 /*注文履歴のタイトル*/
