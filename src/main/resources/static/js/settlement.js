@@ -35,19 +35,50 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function openPopup() {
-	// ここでサーバーから注文情報を取得します
 	fetch('/api/orders/week')
 		.then(response => response.json())
 		.then(data => {
-			// ポップアップの内容を設定します
+			const today = new Date();
 			let popupContent = '<h2>週間注文内容</h2>';
-			popupContent += '<table><tr><th>日付</th><th>曜日</th><th>店名</th><th>内容</th></tr>';
-			data.forEach(order => {
-				popupContent += `<tr><td>${order.date}</td><td>${order.dayOfWeek}</td><td>${order.storeName}</td><td>${order.details}</td></tr>`;
-			});
-			popupContent += '</table>';
+			popupContent += `
+                        <table>
+                            <tr>
+                                <th>月曜日</th>
+                                <th>火曜日</th>
+                                <th>水曜日</th>
+                                <th>木曜日</th>
+                                <th>金曜日</th>
+                                <th>土曜日</th>
+                                <th>日曜日</th>
+                            </tr>
+                            <tr>
+                    `;
 
-			// ポップアップ要素に内容を設定して表示します
+			// 今日から一週間の日付を取得
+			const daysOfWeek = ['月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日', '日曜日'];
+			for (let i = 0; i < daysOfWeek.length; i++) {
+				const currentDate = new Date(today);
+				currentDate.setDate(today.getDate() + i);
+				const formattedDate = currentDate.toISOString().split('T')[0];
+
+				let dayOrders = data[formattedDate] || [];
+				let cellClass = '';
+				if (currentDate.toDateString() === today.toDateString()) {
+					cellClass = 'today';
+				} else if (dayOrders.length > 0) {
+					cellClass = 'hasOrders';
+				}
+
+				popupContent += `<td class="${cellClass}">`;
+				popupContent += `<div><strong>${formattedDate}</strong></div>`;
+				dayOrders.forEach(order => {
+					popupContent += `<div>${order.storeName}<br>${order.details}</div><br>`;
+				});
+				popupContent += '</td>';
+			}
+
+			popupContent += '</tr></table>';
+
 			const popup = document.createElement('div');
 			popup.classList.add('popup');
 			popup.innerHTML = popupContent + '<button onclick="closePopup()">閉じる</button>';

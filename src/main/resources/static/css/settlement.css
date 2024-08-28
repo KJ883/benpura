@@ -190,39 +190,54 @@ header {
 	transform: translateY(-2px);
 	box-shadow: 0 10px 20px -5px rgb(0 0 0 / 30%), 0 0 5px rgb(0 0 0 / 30%);
 }
+
 .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	overflow-y: auto;
+	max-height: 80%;
+	width: 80%;
+}
 
-        .popup table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+.popup table {
+	width: 100%;
+	border-collapse: collapse;
+}
 
-        .popup th, .popup td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
+.popup th,
+.popup td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
+	vertical-align: top;
+}
 
-        .popup th {
-            background-color: #f2f2f2;
-        }
+.popup th {
+	background-color: #f2f2f2;
+}
 
-        .popup tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+.popup td.today {
+	background-color: orange;
+}
 
-        .popup tr:hover {
-            background-color: #f1f1f1;
-        }
+.popup td.hasOrders {
+	background-color: lightgreen;
+}
+
+.popup div {
+	margin-bottom: 10px;
+}
+
+.popup button {
+	margin-top: 20px;
+}
+
 /*.popup {*/
 /*	display: none;*/
 /*	position: fixed;*/
