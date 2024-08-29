@@ -115,6 +115,9 @@ function openPopup() {
 function closePopup() {
     const popup = document.querySelector('.popup');
     if (popup) {
-        document.body.removeChild(popup);
+        popup.classList.add('hide');
+        popup.addEventListener('animationend', () => {
+            document.body.removeChild(popup);
+        }, { once: true });
     }
 }
