@@ -45,8 +45,6 @@ public class CookController {
 		/*---------------*/
 		Iterable<CookCategory> recommendList = repository.findAll();
 		List<CategoryDto> list = new ArrayList<>();
-		this.session.setAttribute("shopId", id);
-		this.session.setAttribute("shopName", shopName);
 		
 		for (CookCategory cookCategory : recommendList) {
 			String imageString = Base64.getEncoder().encodeToString(cookCategory.getImage());

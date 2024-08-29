@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.dto.CartDto;
-import com.example.demo.entity.Order;
+import com.example.demo.entity.Orders;
 import com.example.demo.service.SettlementServiceImpl;
 
 import jakarta.servlet.http.HttpSession;
@@ -50,7 +50,7 @@ public class CartController {
 		
 		dtoList.add(dto);
 		this.session.setAttribute("dtoList", dtoList);
-			
+		
 		
 		model.addAttribute("dtoList",dtoList);
 		return "redirect:/cart";
@@ -82,9 +82,10 @@ public class CartController {
 	public String compShow(@RequestParam int bn) {
 		List<CartDto> list =(List<CartDto>) this.session.getAttribute("dtoList");
 		CartDto dto = list.get(bn);
-		Order orderDetails = new Order(null,this.session.getAttribute("mailaddress").toString(), dto.getShopName(), dto.getName(), dto.getPrice(), dto.getPickupTime());
+		Orders orderDetails = new Orders(null,this.session.getAttribute("mailaddress").toString(), dto.getShopName(), dto.getName(), dto.getPrice(), dto.getPickupTime());
 		service.insertOrder(orderDetails);
-		return "settlement/comp";
+		list.remove(bn);
+		return "redirect:comp";
 	}
 	@PostMapping("/delete")
 	 //delete用リクエスト受ける

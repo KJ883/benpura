@@ -11,7 +11,7 @@ public interface CalendarRepository extends CrudRepository<Calendar,Integer> {
 	@Query(value="SELECT * FROM orders ORDER BY date desc;")
 	Iterable<Calendar>selectAll();
 
-	@Query(value = "select * from order weher mailaddress=:mailaddress")
+	@Query(value = "select * from orders weher mailaddress=:mailaddress")
 	Iterable<Calendar> findById(String mailaddress);
 
 	
