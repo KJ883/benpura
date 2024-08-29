@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('openPopup').addEventListener('click', openPopup);
 });
+
 function openPopup() {
     fetch('/api/orders/week')
         .then(response => {
@@ -73,14 +74,9 @@ function openPopup() {
                     cellClass = 'hasOrders';
                 }
 
-                const formattedDateString = currentDate.toLocaleString('ja-JP', {
-                    month: '2-digit',
-                    day: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                }).replace(/T/, ' ');
+                const formattedDateString = `${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
 
-                popupContent += `<td class="${cellClass}"><div>${formattedDateString}</div>`;
+                popupContent += `<td class="${cellClass}"><div style="border-bottom: 1px solid #000;">${formattedDateString}</div>`;
 
                 const dayOrders = data[formattedDate] || [];
                 if (dayOrders.length > 0) {
@@ -93,7 +89,7 @@ function openPopup() {
                             minute: '2-digit'
                         }).replace(/T/, ' ');
 
-                        popupContent += `<div>
+                        popupContent += `<div style="border-bottom: 1px solid #ccc; margin-bottom: 5px;">
                             <div>${order.item}</div>
                             <div>${order.shopname}</div>
                             <div>${formattedOrderDate}</div>
@@ -122,78 +118,3 @@ function closePopup() {
         document.body.removeChild(popup);
     }
 }
-//function openPopup() {
-//    fetch('/api/orders/week')
-//        .then(response => {
-//            if (!response.ok) {
-//                throw new Error('Network response was not ok');
-//            }
-//            return response.json();
-//        })
-//        .then(data => {
-//            const today = new Date();
-//            let popupContent = '<h2>週間注文内容</h2>';
-//            popupContent += '<table>';
-//            popupContent += `
-//                <thead>
-//                    <tr>
-//            `;
-//
-//            const daysOfWeek = ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'];
-//            const todayIndex = today.getDay();
-//            for (let i = 0; i < 7; i++) {
-//                const dayOfWeek = daysOfWeek[(todayIndex + i) % 7];
-//                popupContent += `<th>${dayOfWeek}</th>`;
-//            }
-//            popupContent += '</tr></thead><tbody><tr>';
-//
-//            const dates = [];
-//            for (let i = 0; i < 7; i++) {
-//                const currentDate = new Date(today);
-//                currentDate.setDate(today.getDate() + i);
-//                dates.push(currentDate);
-//                const formattedDate = `${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
-//                let cellClass = '';
-//
-//                if (currentDate.toDateString() === today.toDateString()) {
-//                    cellClass = 'today';
-//                } else if (data[formattedDate] && data[formattedDate].length > 0) {
-//                    cellClass = 'hasOrders';
-//                }
-//
-//                popupContent += `<td class="${cellClass}"><div style="border-bottom: 1px solid #000;">${formattedDate}</div>`;
-//
-//                const dayOrders = data[formattedDate] || [];
-//                if (dayOrders.length > 0) {
-//                    dayOrders.forEach(order => {
-//                        const orderDate = new Date(order.date);
-//                        const formattedOrderTime = `${orderDate.getHours().toString().padStart(2, '0')}:${orderDate.getMinutes().toString().padStart(2, '0')}`;
-//                        popupContent += `<div>
-//                            <div>${order.item}</div>
-//                            <div>${order.shopname}</div>
-//                            <div>${formattedOrderTime}</div>
-//                        </div>`;
-//                    });
-//                } else {
-//                    popupContent += '<div>注文なし</div>';
-//                }
-//                popupContent += '</td>';
-//            }
-//            popupContent += '</tr></tbody></table><button onclick="closePopup()">閉じる</button>';
-//
-//            const popup = document.createElement('div');
-//            popup.classList.add('popup');
-//            popup.innerHTML = popupContent;
-//            document.body.appendChild(popup);
-//        })
-//        .catch(error => {
-//            console.error('Fetch error:', error);
-//        });
-//}
-//
-//function closePopup() {
-//    const popup = document.querySelector('.popup');
-//    if (popup) {
-//        document.body.removeChild(popup);
-//    }
-//}

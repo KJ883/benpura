@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=RocknRoll+One&display=swap"
 		rel="stylesheet">
 	<link th:href="@{/css/cart.css}" rel="stylesheet">
-	<script th:src="@{/ajs/cart.js}"></script>
+	<script th:src="@{/js/cart.js}"></script>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
 		<p><span>弁ぷら</span>カート</p>
 	</div>
 
-	<div th:each="obj,s:${dtoList}" class="container">
+	<div th:each="obj,s:${dtoList}" class="container anim-box slide-skew">
 
 		<section id="cart">
 			<arti class="product">
