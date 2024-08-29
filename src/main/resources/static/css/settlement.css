@@ -15,17 +15,70 @@ header {
 	margin-bottom: 20px;
 }
 
+.font-logo::first-letter {
+	color: rgb(255, 128, 64);
+	/* Change this to your desired color */
+	font-size: 4rem;
+}
+
+.font-logo {
+	margin-bottom: 0rem;
+	color: #333;
+	text-align: center;
+	font-family: 'Arial', sans-serif;
+	font-size: 3.5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-bottom: 1.5rem;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	padding-bottom: 0rem;
+	/* Ensure no padding is affecting it */
+	line-height: 1;
+	/* Reduce line height if needed */
+}
+
+.highlight {
+	color: rgb(0, 128, 128);
+	/* Change this to your desired color */
+}
+
+.subtitle {
+	text-align: center;
+	/* Center the subtitle */
+	font-family: 'Gochi Hand', cursive;
+	/* Match font family */
+	font-size: 3rem;
+	/* Adjust font size as needed */
+	color: #666;
+	/* Subtitle color */
+	margin-bottom: 1.5rem;
+	/* Space below the subtitle */
+	letter-spacing: 1px;
+	/* Optional: Adjust letter spacing */
+	margin-top: 0;
+	/* Already set */
+	padding-top: 0;
+	/* Ensure no padding is affecting it */
+	line-height: 0;
+	/* Reduce line height if needed */
+}
+
+
 .title {
 	font-family: 'RocknRoll One', sans-serif;
-	font-size: 2.5rem;
+	font-size: 3rem;
+	font-style: oblique;
 	text-align: center;
 	color: #ff9800;
+	text-shadow: #FC0 1px 0 10px;
 	/* オレンジ */
 }
 
 .contens {
 	width: 75%;
 	margin: auto;
+	padding-top: 3%;
 }
 
 .product {
@@ -71,7 +124,7 @@ header {
 .time {
 	text-align: left;
 	color: #777;
-	text-decoration:underline;
+	text-decoration: underline;
 }
 
 .quantity {
@@ -194,6 +247,7 @@ header {
 		opacity: 0;
 		transform: translate(-50%, -60%);
 	}
+
 	100% {
 		opacity: 1;
 		transform: translate(-50%, -50%);
@@ -205,6 +259,7 @@ header {
 		opacity: 1;
 		transform: translate(-50%, -50%);
 	}
+
 	100% {
 		opacity: 0;
 		transform: translate(-50%, -60%);
@@ -260,6 +315,7 @@ header {
 .popup td {
 	background-color: lightblue;
 }
+
 .popup div {
 	margin-bottom: 10px;
 }
