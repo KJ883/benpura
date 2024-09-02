@@ -1,5 +1,12 @@
 @charset "UTF-8";
-
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+body{
+	width:100%;
+}
 .step-number {
     background-color: rgb(128, 255, 0);
     color: white;
@@ -21,7 +28,6 @@
 span{
 	color:rgb(0, 0, 0);
 }
-
 
 .stepbar {
 	margin: 0 auto;
@@ -46,11 +52,19 @@ span{
 	font-size: 25px;
 
 }
+.step-txt{
+	text-align: left;
+	font-size: 1rem;
+	font-weight: bold;
+	padding-left: 10%;
+	padding-top: 2%;
+}
 
 h2 {
 	position: relative;
 	padding: 1rem 2rem;
 	border-bottom: 5px solid #094;
+	margin:0;
 }
 
 h2:before {
@@ -105,11 +119,6 @@ h5 {
 	display: none;
 }
 
-@media screen and (max-width: 960px) {
-	.stepbar {
-		width: 90%;
-	}
-}
 
 
 /* ページ全体の中央寄せ設定 */
@@ -190,14 +199,15 @@ td {
 
 /* イベント表示部分のスタイル設定 */
 .event {
-	background-color: #90ee90;
+	background-color: rgba(144, 238, 144, 0.8);
 	margin-top: 5px;
 	padding: 2px;
 	font-size: 18px;
-	width: 80%;
+	width: 85%;
 	margin: 5px auto;
 	/* 上下に余白を持たせ、中央寄せ */
-	text-align: center;/
+	text-align: center;
+	border-radius: 5%;
 }
 
 /* タイトルのスタイル */
@@ -317,4 +327,53 @@ h2 {
 	top: 0;
 	background-color: #f2f2f2;
 	z-index: 1;
+}
+.scroll {
+	display: inline-block;
+	padding-top: 70px;
+	/*	position: relative;*/
+	position: fixed;
+
+	font-size: 18px;
+	/*	margin-left: 90%;*/
+	/*	margin-top: -5%;*/
+	/*	margin-bottom: -5%;*/
+	top: 70%;
+	right: 5%;
+}
+
+.scroll::before {
+	animation: scroll 3.5s infinite;
+	border: solid #000;
+	border-width: 0 0 1px 1px;
+	content: "";
+	display: inline-block;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	transform: rotate(-45deg);
+	width: 20px;
+	height: 20px;
+}
+
+@keyframes scroll {
+	0% {
+		transform: rotate(-45deg) translate(0, 0);
+	}
+
+	80% {
+		transform: rotate(-45deg) translate(-30px, 30px);
+	}
+
+	0%,
+	80%,
+	100% {
+		opacity: 0;
+	}
+
+	40% {
+		opacity: 1;
+	}
 }
