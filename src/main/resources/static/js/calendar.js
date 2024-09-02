@@ -61,12 +61,12 @@ function updateCalendar() {
 	const endDate = new Date(today2);
 	endDate.setDate(today2.getDate() + 7);
 	// 来月の最初の日
-	const nextMonth = new Date(today2.getFullYear(), today2.getMonth() + 1, 1);
+//	const nextMonth = new Date(today2.getFullYear(), today2.getMonth() + 1, 1);
 	// 日付の範囲を決定
-	const maxDate = endDate > nextMonth ? endDate : nextMonth;
+//	const maxDate = endDate > nextMonth ? endDate : nextMonth;
 
 	// 今日から最大日付までのオプションを追加
-	for (let date = today2; date <= maxDate; date.setDate(date.getDate() + 1)) {
+	for (let date = today2; date <= endDate; date.setDate(date.getDate() + 1)) {
 		const option = document.createElement('option');
 		option.value = formatDateToString(date);
 		option.textContent = formatDateToString(date)+ ' (' + getDayName(date) + ')';
