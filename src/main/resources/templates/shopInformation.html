@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+			layout:decorate="~{commons/layout}">
 
 <head>
 	<meta charset="UTF-8">
@@ -8,10 +9,10 @@
 </head>
 
 <body>
-	<div id="headline">
-		<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-			layout:decorate="~{commons/layout}">
-	</div>
+<!--	<div id="headline">-->
+<!--		<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
+<!--			layout:decorate="~{commons/layout}">-->
+<!--	</div>-->
 
 	<div>
 		<h2><span><i class="fas fa-star">★</i></span>店舗情報</h2>
@@ -25,7 +26,7 @@
 
 		<div class="image">
 			<a href="@{/cookCategory}" target="_blank">
-				<img th:src="'data:image/png;base64,'+${shop.image}" alt="picture"></a>
+			  <img th:src="'data:image/png;base64,'+${shop.image}" alt="picture" class="centered-image"></a>
 		</div>
 
 		<h1 class="shopName"><span th:text="${shop.shopName}">name</span></h1>
