@@ -85,6 +85,7 @@ public class CartController {
 		Orders orderDetails = new Orders(null,this.session.getAttribute("mailaddress").toString(), dto.getShopName(), dto.getName(), dto.getPrice(), dto.getPickupTime());
 		service.insertOrder(orderDetails);
 		list.remove(bn);
+		
 		return "redirect:comp";
 	}
 	@PostMapping("/delete")
