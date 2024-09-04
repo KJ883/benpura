@@ -58,12 +58,13 @@ function updateCalendar() {
 	//１週間先の日付を定義
 	//
 	const today2 = new Date();
+//	today2.setDate(today2.getDate()+25);
 	const endDate = new Date(today2);
 	endDate.setDate(today2.getDate() + 7);
 	// 来月の最初の日
-//	const nextMonth = new Date(today2.getFullYear(), today2.getMonth() + 1, 1);
+	//const nextMonth = new Date(today2.getFullYear(), today2.getMonth() + 1, 1);
 	// 日付の範囲を決定
-//	const maxDate = endDate > nextMonth ? endDate : nextMonth;
+	//const maxDate = endDate > nextMonth ? endDate : nextMonth;
 
 	// 今日から最大日付までのオプションを追加
 	for (let date = today2; date <= endDate; date.setDate(date.getDate() + 1)) {
