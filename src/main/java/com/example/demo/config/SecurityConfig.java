@@ -27,7 +27,7 @@ public class SecurityConfig {
 		http.formLogin(form -> form
 				.loginPage("/login") // ログイン画面のURL
 				.loginProcessingUrl("/authenticate")// ユーザー名・パスワードの送信先URL
-				.defaultSuccessUrl("/calendar") // ログイン成功後のリダイレクト先URL
+				.defaultSuccessUrl("/calendar",true) // ログイン成功後のリダイレクト先URL
 				.failureUrl("/login?failure") // ログイン失敗後のリダイレクト先URL
 				.usernameParameter("mailAddress") // ログイン画面のユーザー名のフィールド
 				.permitAll() // ログイン画面は未ログインでもアクセス可能
