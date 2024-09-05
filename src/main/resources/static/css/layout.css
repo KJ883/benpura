@@ -4,7 +4,7 @@
 	position: sticky;
 	top: 0;
 	width: 100%;
-	background-color: rgb(128, 255, 128);
+	background-image: linear-gradient( 135deg, #FFF720 10%, #3CD500 100%);
 	/*余白を消すためにmarginマイナス設定*/
 	box-shadow:
     0 0.5px 1.5px rgba(0, 0, 0, 0.057),
@@ -22,7 +22,7 @@ nav {
 	align-items: center;
 	gap: 10px;
 	/* アイテム間のスペース（オプション） */
-	padding: 5px;
+/*	padding: 5px;*/
 	/* ナビゲーション内にパディングを追加（オプション） */
 	
 	width: 100%; /* ナビゲーションを全幅に */
@@ -47,11 +47,18 @@ nav a {
 	/* テキストを中央揃え */
 }
 
-nav img {
-	width: 25px;
-	height: auto;
-}
-
+/*nav img {*/
+/*	width: 25px;*/
+/*	height: auto;*/
+/*}*/
+/*.header-img {*/
+/*	width: 25px;*/
+/*	height: auto;*/
+/*	margin:auto;*/
+/*}*/
+/*.header-btn {*/
+/*	font-size: 1.1rem;*/
+/*}*/
 nav .left-align {
 	margin-right: auto; /* 左側のアイテムを左寄せ */
 }
@@ -115,4 +122,31 @@ nav b {
 /* ドロップダウンメニューのホバー処理 */
 .drop-menu:hover .drop-menu-list {
 	visibility: visible;
+}
+.hover9 img{
+	width: 25px;
+	height: auto;
+}
+.hover9 {
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+	font-size: 1rem;
+	align-items: center;
+}
+.hover9::after {
+	position: absolute;
+	content: '';
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: rgb(250, 94, 27);
+	transition: all 0.3s ease 0s;
+}
+.hover9:hover {
+	cursor: pointer;
+}
+.hover9:hover::after {
+	width: 100%;
 }

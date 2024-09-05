@@ -1,13 +1,112 @@
 @charset "UTF-8";
-.contet {
-	background-color: aquamarine;
-	border-radius: 10%;
-	padding: 0 10%;
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+body {
+  margin:0;
 }
-.content p {
+
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(135deg, #FFF720 10%, #3CD500 100%);
+}
+
+.inner-header {
+  height:65vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}
+.content-msg {
+	display: inline-block;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background-color: rgba(220, 255, 187,0.7);
+}
+
+.content-msg p {
+	justify-content: center;
 	font-size: 2rem;
 }
-.content a {
-	text-align: center;
-	background-color: chartreuse;
+
+.content-msg a {
+	display: inline-block;
+	margin-top: 20px;
+	padding: 10px 20px;
+	background-color: #007BFF;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+}
+
+.content-msg a:hover {
+	background-color: #0056b3;
 }

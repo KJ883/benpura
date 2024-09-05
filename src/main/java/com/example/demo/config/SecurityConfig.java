@@ -32,14 +32,18 @@ public class SecurityConfig {
 				.usernameParameter("mailAddress") // ログイン画面のユーザー名のフィールド
 				.permitAll() // ログイン画面は未ログインでもアクセス可能
 		).logout(logout -> logout
-				.logoutSuccessUrl("/login?logout") // ログアウト成功後のリダイレクト先URL
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/logout") // ログアウト成功後のリダイレクト先URL
+				.permitAll()
 		).authorizeHttpRequests(authz -> authz
 				.requestMatchers("/login").permitAll()// url
+				.requestMatchers("/logout").permitAll()// url
 				.requestMatchers("/register").permitAll()// url
 				.requestMatchers("/confirm").permitAll()// url
 				.requestMatchers("/videos/**").permitAll()// url
 				.requestMatchers("/image/**").permitAll()// url
 				.requestMatchers("/success").permitAll()// url
+				.requestMatchers("/css/**").permitAll()
 				.anyRequest().authenticated() // 他のURLはログイン後のみアクセス可能
 
 		);

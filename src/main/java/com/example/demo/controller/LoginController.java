@@ -42,6 +42,10 @@ public class LoginController {
 		// ログイン画面を表示
 		return "login";
 	}
+	 @GetMapping("/logout")
+	    public String logout() {
+	        return "/logout.html"; // ログアウト後のリダイレクト先
+	    }
 
 	//	// SecurityConfigのdefaultSuccessUrlで指定したURL
 	//	@GetMapping("calendar") //local host url
