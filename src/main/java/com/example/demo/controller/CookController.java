@@ -65,7 +65,7 @@ public class CookController {
 		for (CookCategory cookCategory : recommendList) {
 			String imageString = Base64.getEncoder().encodeToString(cookCategory.getImage());
 			
-			if (cookCategory.getTypeComments() != null) {
+			if (cookCategory.getTypeComments() != null && !cookCategory.getTypeComments().isEmpty()) {
 				list2.add(new CategoryDto(cookCategory.getId(), cookCategory.getShopId(),cookCategory.getItem()
 						, cookCategory.getIntroductions(), imageString, cookCategory.getRecommend(),cookCategory.getComments1()
 						, cookCategory.getComments2(),cookCategory.getBentoType(),cookCategory.getTypeComments(),cookCategory.getPriceS(),cookCategory.getPriceM(),cookCategory.getComments1Color()));
